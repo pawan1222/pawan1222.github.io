@@ -1,60 +1,83 @@
-// shopping cart
+let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
-let cart={};
-const product=[
-    {id: 1, name: "product 1", price: 25},
-    {id: 2, name: "product 2", price: 35},
-    {id: 3, name: "product 3", price: 45}
-]
+const product = [
+  { id: 1, name: "Product 1", price: 25 },
+  { id: 2, name: "Product 2", price: 35 },
+  { id: 3, name: "Product 3", price: 45 }
+];
 
-const showproduct= () => {
-    console.log("***product list***")
-    let str= ``
-    product.map(value => {
-        str+= `${value.id} - ${value.name} - ${value.price}\n`;
-    })
-    console.log(str);
-}
-// showproduct();
+const root = document.getElementById("root");
+const cartOutput = document.getElementById("cart-output");
 
-
-const addtocart=(id)=>{
-    cart={...cart,[id]:1};
+const showproduct = () => {
+  let html = "";
+  product.map(value => {
+    html += `
+      <div class="product">
+        <h3>${value.name}</h3>
+        <p>Price: $${value.price}</p>
+        <button onclick="addtocart(${value.id})">Add to Cart</button>
+      </div>
+    `;
+  });
+  root.innerHTML = html;
 };
 
-addtocart(1);
-addtocart(2);
-addtocart(3);
-// console.log(cart);
+window.addtocart = (id) => {
+  if (cart[id]) {
+    cart[id]++;
+  } else {
+    cart[id] = 1;
+  }
+  updateCart();
+};
 
-const showcart=()=>{
-    console.log("***cart list***");
-    let str=""
-    product.map((value)=>{
-        cart[value.id] && 
-        (str += `${value.name} - ${value.price} - ${cart[value.id]} - ${cart[value.id]*value.price}\n`);
-    })
-    console.log(str);
-}
+window.increment = (id) => {
+  cart[id]++;
+  updateCart();
+};
 
-// showcart();
+window.decrement = (id) => {
+  if (cart[id] > 1) {
+    cart[id]--;
+  } else {
+    delete cart[id];
+  }
+  updateCart();
+};
 
-const increment=(id)=>{
-    cart={...cart,[id]:cart[id]+1};
-}
+window.clearCart = () => {
+  cart = {};
+  updateCart();
+};
 
-// increment(1);
-// showcart();
+const updateCart = () => {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  showcart();
+};
 
-const decrement=(id)=>{
-    cart={...cart,[id]:cart[id]-1};
-}
+const showcart = () => {
+  let str = `<div class="cart-summary"><h2>Cart</h2>`;
+  let total = 0;
+  product.forEach(value => {
+    const qty = cart[value.id];
+    if (qty) {
+      const subtotal = qty * value.price;
+      total += subtotal;
+      str += `
+        <p>
+          ${value.name} - $${value.price} × ${qty} = $${subtotal}
+          <button onclick="increment(${value.id})">+</button>
+          <button onclick="decrement(${value.id})">−</button>
+        </p>
+      `;
+    }
+  });
 
-// decrement(1);
-// showcart();
+  str += `<h3>Total: $${total}</h3></div>`;
+  cartOutput.innerHTML = str;
+};
 
-const ordervalue=product.reduce((sum, value)=>{
-    return sum+ (value.price * cart[value.id] ?? 0);
-},0);
-
-// console.log(`total cost - ${ordervalue}`);
+// On page load
+showproduct();
+showcart();

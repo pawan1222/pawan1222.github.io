@@ -1,0 +1,30 @@
+<!-- event listener -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function f1(value) {
+      alert(value);
+    }
+    function f2(value) {
+      alert(value);
+    }
+  </script>
+  <body>
+    <p onclick="f1(event.target.innerHTML)">Home</p>
+    <p onclick="f2(event.target.innerHTML)">Cart</p>
+
+    <!-- <p>
+  <input type="text" onclick="f1(event.target.value)" />
+</p> -->
+
+    <p>
+      <input type="text" onchange="f1(event.target.value)" />
+    </p>
+  </body>
+</html>

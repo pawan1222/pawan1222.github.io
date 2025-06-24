@@ -1,4 +1,45 @@
-.container {
-    border: 1px gray solid;
-    background-color: silver;
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+#container {
+  max-width: 800px;
+  margin: auto;
+}
+
+ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+button {
+  margin-top: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.cart-summary p button {
+  margin-left: 5px;
+  padding: 2px 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#clear-btn {
+  margin-top: 20px;
+  padding: 8px 14px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
