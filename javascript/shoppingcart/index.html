@@ -3,25 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shopping Cart</title>
+  <title>Simple Cart System</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="container">
-    <h1>Shopping Cart</h1>
-    <ul>
-      <li>Home</li>
-      <li>Cart</li>
-    </ul>
+  <h1>🛒 Cart Management</h1>
 
-    <div id="root"></div>
-    <div id="cart-output"></div>
-    <button onclick="clearCart()" id="clear-btn">Clear Cart</button>
+  <div class="container">
+    <!-- Product Section -->
+    <section class="products">
+      <h2>Available Products</h2>
+      <div id="product-list" class="product-list"></div>
+    </section>
 
-    <hr />
-    <h5>Shopping Cart. Copyright 2025. All rights reserved.</h5>
+    <!-- Cart Section -->
+    <section class="cart">
+      <h2>My Cart</h2>
+      <div id="cart-items"></div>
+      <h3 id="total-price">Total: ₹0</h3>
+    </section>
   </div>
 
-  <script type="module" src="index.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
