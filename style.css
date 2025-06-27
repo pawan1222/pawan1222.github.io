@@ -1,0 +1,303 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  line-height: 1.6;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #5990f6;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffeb3b;
+}
+
+/* Hero Section */
+.image-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 60px;
+  gap: 40px;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+}
+
+.image-container {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+
+.image-container img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.intro-container {
+  flex: 1;
+  min-width: 250px;
+}
+
+.intro-container h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.intro-container p {
+  font-size: 18px;
+  color: #555555;
+  margin-bottom: 15px;
+}
+
+/* Links Section (Portfolio/Projects/Assignments) */
+.links-section {
+  background-color: #ffffff;
+  padding: 40px 60px;
+}
+
+.links-section h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.links-section ul {
+  list-style-type: none;
+  margin: 10px 0 30px;
+}
+
+.links-section li {
+  margin: 8px 0;
+}
+
+.links-section a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.links-section a:hover {
+  text-decoration: underline;
+}
+
+/* Footer Services Section */
+.footer {
+  background-color: #5990f6;
+  color: #ffffff;
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.footer h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.services {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.service-card {
+  background-color: #ffffff;
+  color: #333333;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card h3 {
+  margin-bottom: 10px;
+  color: #5990f6;
+}
+
+.service-card p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* For mobile menu, can add hamburger toggle later */
+  }
+
+  .image-section {
+    flex-direction: column;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .intro-container h1 {
+    font-size: 28px;
+  }
+
+  .intro-container p {
+    font-size: 16px;
+  }
+
+  .services {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card {
+    width: 90%;
+  }
+}
+
+/* Projects Section */
+.projects-section {
+  background-color: #ffffff;
+  color: #333;
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.projects-section h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.project-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.project-card {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  background-color: #eaf3ff;
+}
+
+.project-card h3 {
+  color: #5990f6;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-card {
+    width: 90%;
+  }
+}
+
+
+/* Tech Stack Section */
+.tech-section {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.tech-section h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.tech-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.tech-card {
+  display: inline-block;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px 30px;
+  width: 160px;
+  text-decoration: none;
+  color: #5990f6;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+}
+
+.tech-card:hover {
+  background-color: #e0edff;
+  transform: translateY(-5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tech-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tech-card {
+    width: 80%;
+  }
+}

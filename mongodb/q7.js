@@ -97,3 +97,31 @@ db.student.updateMany(
     {},
     {$inc:{age:1}}
 )
+
+// return only name and age for students, excluding _id 
+db.student.aggregate([
+    {$project:{
+        _id:0,
+        name:1,
+        age:1
+    }
+  }
+])
+
+db.address.insertOne(
+    {studentId :ObjectID('685cdd4168b9fb2706748a62'),
+    city:"LA",
+    country:"USA"}
+)
+
+db.address.insertOne(
+   { studentId: ObjectID('685cdd4168b9fb2706748a63'),
+    city:"LANDON",
+    country:"UK"}
+)
+
+db.address.insertOne(
+    {studentId: ObjectID('685cdd4168b9fb2706748a64'),
+    city:"LS",
+    country:"USA"}
+)
