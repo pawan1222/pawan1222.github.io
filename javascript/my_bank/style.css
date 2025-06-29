@@ -1,0 +1,103 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container div {
+    border: 1px solid gray;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.container input,button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Basic body styling */
+body {
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  padding: 40px;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Container holds login/register and user list side by side */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Individual sections */
+.container > div {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 30px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 300px;
+}
+
+h3 {
+  text-align: center;
+  color: #007bff;
+}
+
+/* Inputs & buttons */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 16px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+#errorTxt {
+  color: red;
+  text-align: center;
+}
+
+h4 {
+  color: #555;
+  margin-top: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.container p {
+  margin: 6px 0;
+}
+
+.container div:last-child {
+  width: 350px;
+}
