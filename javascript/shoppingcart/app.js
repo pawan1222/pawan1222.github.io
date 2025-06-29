@@ -82,71 +82,31 @@
 // showproduct();
 // showcart();
 
-const products = [
-  { id: 1, name: "Shirt", price: 500 },
-  { id: 2, name: "T-Shirt", price: 300 },
-  { id: 3, name: "Jeans", price: 1200 },
-  { id: 4, name: "Trouser", price: 800 },
-  { id: 5, name: "Jacket", price: 1500 }
-];
 
-// cart will store product id and quantity
-let cart = {};
 
-// render products with buttons
-function renderProducts() {
-  const container = document.getElementById("product-container");
-  let html = "";
-  products.forEach((item) => {
-    const qty = cart[item.id] || 0;
-    html += `
-      <div class="product">
-        <h3>${item.name}</h3>
-        <p>Price: ₹${item.price}</p>
-        <p>Quantity: ${qty}</p>
-        <button onclick="increment(${item.id})">+</button>
-        <button onclick="decrement(${item.id})">−</button>
-      </div>
-    `;
-  });
-  container.innerHTML = html;
-}
 
-// increase quantity
-function increment(id) {
-  cart[id] = (cart[id] || 0) + 1;
-  renderProducts();
-}
+const products = document.querySelectorAll('.product');
 
-// decrease quantity
-function decrement(id) {
-  if (cart[id]) {
-    cart[id]--;
-    if (cart[id] === 0) {
-      delete cart[id];
-    }
-  }
-  renderProducts();
-}
+products.forEach(product => {
+  const incrementBtn = product.querySelector('.increment');
+  const decrementBtn = product.querySelector('.decrement');
+  const quantitySpan = product.querySelector('.quantity');
+  const priceSpan = product.querySelector('.price');
+  const basePrice = parseInt(product.dataset.price);
 
-// show cart summary
-function showCart() {
-  let html = `<h2>🧾 Cart Summary</h2>`;
-  let total = 0;
-
-  products.forEach(item => {
-    const qty = cart[item.id];
-    if (qty) {
-      const subtotal = qty * item.price;
-      total += subtotal;
-      html += `<p>${item.name}: ₹${item.price} × ${qty} = ₹${subtotal}</p>`;
-    }
+  incrementBtn.addEventListener('click', () => {
+    let quantity = parseInt(quantitySpan.textContent);
+    quantity++;
+    quantitySpan.textContent = quantity;
+    priceSpan.textContent = '$' + (quantity * basePrice);
   });
 
-  html += `<hr><h3>Total Price: ₹${total}</h3>`;
-
-  document.getElementById("cart-summary").innerHTML = html;
-}
-
-// Initial render
-renderProducts();
+  decrementBtn.addEventListener('click', () => {
+    let quantity = parseInt(quantitySpan.textContent);
+    if (quantity > 1) {
+      quantity--;
+      quantitySpan.textContent = quantity;
+      priceSpan.textContent = '$' + (quantity * basePrice);
+    }
+  });
+});

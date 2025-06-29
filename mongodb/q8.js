@@ -5,9 +5,6 @@ db.posts.insertOne({_id:"p2",post:"post2"})
 lpua> db.posts.find()
 [ { _id: 'p1', post: 'post1' }, { _id: 'p2', post: 'post2' } ]
 
-
-
-
 db.comments.insertOne({
     _id:"c1",
     pid:"p1",
