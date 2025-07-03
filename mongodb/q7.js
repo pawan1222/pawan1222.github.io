@@ -107,3 +107,83 @@ db.student.aggregate([
     }
   }
 ])
+
+
+db.employees.aggregate([
+    {$project:{
+        _id:0,
+        name:1,
+        salary:1,
+        Grade:{
+            $cond:[
+                {$gt:["$salary", 1500]},
+                "Grade A",
+                "Grade B"
+            ]
+        }
+    }
+    }
+])
+
+
+db.employees.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      salary: 1,
+      Grade: {
+        $cond: {
+          if: { $eq: ["$salary", 1500] },
+          then: "Grade A",
+          else: "Grade B"
+        }
+      }
+    }
+  }
+])
+
+
+// add a new field strSalary in employees
+// store "2500" for all IT employees
+// store "1000" for others employees
+
+db.employees.updateMany(
+    {department:"IT"},
+    {$set:{strSalary:"2500"}
+})
+
+db.employees.aggregate([
+    {$project:{
+        _id:0,
+        name:1,
+        department:1,
+        sal:{$convert:{input:"$salary", to:"int"}}
+    }},
+    {$group:{_id:"$department", total: {$sum: "$sal"}}},
+])
+
+
+db.employees.aggregate([
+    {$project:{
+        _id:0,
+        name:1,
+        department:1,
+        sal:{$convert:{input:"$salary", to:"int"}}
+    }},
+    {$group:{_id:"$department", total: {$sum: "$sal"}}},
+    {$out:"depWiseSalary"}
+])
+
+db.createView("depWaiseSalaryView","employees",[
+    {$project:{
+        _id:0,
+        name:1,
+        department:1,
+        sal:{$convert:{input:"$salary", to:"int"}}
+    }},
+    {$group:{_id:"$department", total: {$sum: "$sal"}}},
+])
+
+db.depWaiseSalaryView.drop()
+
